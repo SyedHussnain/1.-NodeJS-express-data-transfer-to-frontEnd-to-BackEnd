@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { v4 } from "uuid";
-
+import { useNavigate } from "react-router-dom";
 function SignUp() {
+  let navigate = useNavigate();
   let [user, setUser] = useState({});
   const updateData = (evt) => {
     setUser({
@@ -13,6 +14,7 @@ function SignUp() {
   const saveUser = async () => {
     user.id = v4();
     console.log(user);
+    navigate("/signin");
     await axios.post("/signup", user);
   };
 

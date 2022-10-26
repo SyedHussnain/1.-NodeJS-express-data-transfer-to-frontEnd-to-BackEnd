@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import { NotificationManager } from "react-notifications";
 // import { useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ function SignIn() {
   let userCompany = useRef();
 
   // let dispatch = useDispatch();
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   const loginUser = async (evt) => {
     evt.preventDefault();
@@ -25,6 +25,7 @@ function SignIn() {
 
     if (userMila.data) {
       NotificationManager.success("User Found");
+      navigate("/admin")
     } else {
       NotificationManager.error("User not Found");
     }
